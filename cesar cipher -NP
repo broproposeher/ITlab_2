@@ -1,0 +1,20 @@
+puts "Enter a string to encrypt"
+gets stdin x
+for {set i 0} {$i<[string length $x]} {incr i} {
+set value [scan [string index $x $i] %c]
+if {$value>=65 && $value<=90} {
+set in [expr $value-65]
+set ein [expr ($in+3)%26]
+set fin [expr $ein+65]
+append et [format %c $fin]
+} elseif {$value>=97 && $value<=122} {
+set in [expr $value-97]
+set ein [expr ($in+3)%26]
+set fin [expr $ein+97]
+append et [format %c $fin]
+} else {
+set fin [expr $value+3]
+append et [format %c $fin]
+}
+}
+puts "The Caser cipher-text is:$et"
